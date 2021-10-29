@@ -1,0 +1,5 @@
+venv/
+workspace.code-workspace
+.env
+*.sqlite3
+project_credentials
