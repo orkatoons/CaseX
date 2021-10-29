@@ -3,4 +3,5 @@ workspace.code-workspace
 .env
 *.sqlite3
 project_credentials
-*/__pycache__/
+__pycache__/
+*.pyc
