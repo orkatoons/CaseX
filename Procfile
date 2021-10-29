@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn myproject.wsgi
+release: python caseX/manage.py migrate
+web: gunicorn caseX.wsgi
