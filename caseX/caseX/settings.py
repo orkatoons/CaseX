@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_openid_auth'
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +129,17 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# features for OPENID
+
+# create users when logged in using open id
+# OPENID_CREATE_USERS = True
+
+# Update user profile from data from open id login
+# OPENID_UPDATE_DETAILS_FROM_SREG = True
+
+LOGIN_URL = '/openid/login/'
+LOGIN_REDIRECT_URL = '/'
+
+
