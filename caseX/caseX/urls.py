@@ -19,5 +19,5 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'^openid/', include('django_openid_auth.urls')),
+    url(r'^openid/', include('django_openid_auth.urls')),
 ]
