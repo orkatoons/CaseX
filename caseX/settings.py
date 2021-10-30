@@ -59,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'caseX.urls'
@@ -105,10 +107,17 @@ elif os.environ.get('ENVIRONMENT')=='heroku':
 # STATIC_URL = "/static/"
 
 # # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
+
+# https://stackoverflow.com/questions/28961177/heroku-static-files-not-loading-django
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
-    
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # TODO: add STATICFILE_STORAGE for images and point to aws bucket
 
 
