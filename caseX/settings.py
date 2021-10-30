@@ -18,9 +18,8 @@ import dj_database_url
 
 load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# heroku settings https://devcenter.heroku.com/articles/django-assets
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -102,6 +101,21 @@ else:
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage' # new
+
+# # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
+    
+# TODO: add STATICFILE_STORAGE for images and point to aws bucket
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -135,16 +149,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "static/"
-print("Root : {}".format(STATIC_ROOT))
-STATICFILES_DIRS = []
-
-# TODO: add STATICFILE_STORAGE for images and point to aws bucket
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
