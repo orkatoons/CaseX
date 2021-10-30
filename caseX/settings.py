@@ -141,6 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "static/"
+print("Root : {}".format(STATIC_ROOT))
 STATICFILES_DIRS = []
 
 # TODO: add STATICFILE_STORAGE for images and point to aws bucket
