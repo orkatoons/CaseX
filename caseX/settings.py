@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('ENVIRONMENT')=='dev' else False
+DEBUG = True if os.environ.get('ENVIRONMENT')=='dev' or os.environ.get('ENVIRONMENT')=='heroku' else False
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', 'orka-casex.herokuapp.com']
@@ -96,7 +96,7 @@ if os.environ.get('ENVIRONMENT')=='dev':
             'PASSWORD': os.environ.get('DB_PASS')
         }
     }
-else:
+else if os.environ.get('ENVIRONMENT')=='heroku':
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
