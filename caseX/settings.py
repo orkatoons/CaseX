@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('ENVIRONMENT')=='dev' or os.environ.get('ENVIRONMENT')=='heroku' else False
+DEBUG = True if os.environ.get('ENVIRONMENT')=='dev' else False
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
@@ -59,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # whitenoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'caseX.urls'
@@ -101,14 +103,21 @@ elif os.environ.get('ENVIRONMENT')=='heroku':
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = "/static/"
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = "/static/"
 
 # # https://docs.djangoproject.com/en/3.2/howto/static-files/
-# STATIC_URL = 'static/'
+# STATIC_URL = '/static/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
-    
+
+# https://stackoverflow.com/questions/28961177/heroku-static-files-not-loading-django
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 # TODO: add STATICFILE_STORAGE for images and point to aws bucket
 
 
