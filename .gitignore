@@ -5,3 +5,4 @@ workspace.code-workspace
 project_credentials
 __pycache__/
 *.pyc
+.vscode/

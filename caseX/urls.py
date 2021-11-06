@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 
+# dashboard app
+import dashboard
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^openid/', include('django_openid_auth.urls')),
+    url(r'dashboard/', include('dashboard.urls'))
 ]
