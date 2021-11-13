@@ -6,7 +6,7 @@ from django.conf.urls import include, url
 from .views import dashboard
 
 urlpatterns = [
-    url(r'^$', dashboard)  # You are already inside the dashboard resource
+    url(r'^$', dashboard.as_view())  # You are already inside the dashboard resource
    
     
 ]

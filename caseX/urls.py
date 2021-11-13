@@ -21,7 +21,7 @@ from django.conf.urls import include, url
 import dashboard
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^openid/', include('django_openid_auth.urls')),
-    url(r'dashboard/', include('dashboard.urls'))
+    path('admin/', admin.site.urls, name='admin-home'),
+    url(r'^openid/', include('django_openid_auth.urls'), name='openid-main'),
+    url(r'dashboard/', include('dashboard.urls'), name='dashboard')
 ]

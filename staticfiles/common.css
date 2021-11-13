@@ -1,0 +1,58 @@
+/* 
+definign global color template at  
+https://www.toptal.com/designers/colourcode/#/freebuild/1b2838-2a3f5a-171a21-c5c3c0-1359ad-f3a21e-5c7e10-1f6083
+*/
+
+:root{
+  --steam-white: #C5C3C0; /* for heading and text */
+  --steam-blue: #1359AD; /* for normal text */
+  --steam-div: #171A21; /*fo body divs*/
+  --steam-header: #1B2838; /* for headers */
+  --steam-body: #2A3F5A; /* for main body */
+  --steam-csgo: #F3A21E; /* for cs go */
+  --steam-green: #5C7E10; /* for primary buttons */
+  --steam-teal-blue: #1F6083; /* for input boxes */
+}
+
+
+a{
+  color: var(--steam-white);
+  text-decoration: none;
+}
+
+a:hover{
+  color: var(--steam-teal-blue);
+  text-decoration: none;
+}
+
+body{
+  min-height: 100vh;
+  background-color: var(--steam-body);
+  color: var(--steam-text);
+}
+
+
+#logo{
+  background-image: url('/static/caseX.png');
+  background-size: cover;
+  height: 30px;
+  width: 100px;
+}
+
+
+#header{
+  background-color: var(--steam-header);
+}
+
+#header-content{
+  position: relative;
+  width: 940px;
+  height: 104px;
+  margin: 0px auto;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0px;
+  background-color: var(--steam-header);
+}

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_openid_auth'
+    'django_openid_auth',
+    'django_extensions'
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'caseX.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['dashboard/templates'],
+        'DIRS': ['dashboard/templates', 'commonTemplates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
